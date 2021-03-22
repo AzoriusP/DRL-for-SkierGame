@@ -3,10 +3,6 @@ import pygame, sys, random
 skier_images = ["./bg_img/skier_down.png", "./bg_img/skier_right1.png", "./bg_img/skier_right2.png",
                  "./bg_img/skier_left2.png", "./bg_img/skier_left1.png"]
 
-
-
-
-
 class SkierClass(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
@@ -45,7 +41,6 @@ class ObstacleClass(pygame.sprite.Sprite):
     def scroll(self, terrainPos):
         self.rect.centery = self.location[1] - terrainPos
 
-
 def create_map(start, end):
     obstacles = pygame.sprite.Group()
     locations = []
@@ -63,16 +58,11 @@ def create_map(start, end):
             obstacles.add(obstacle)
     return obstacles
 
-
 def updateObstacleGroup(map0, map1):
     obstacles = pygame.sprite.Group()
     for ob in map0:  obstacles.add(ob)
     for ob in map1:  obstacles.add(ob)
     return obstacles
-
-
-
-
 
 class GameState:
     def __init__(self):
@@ -87,8 +77,6 @@ class GameState:
         self.score_text=self.font.render("Score: " +str(self.points), 1, (0, 0, 0))
         self.skier = SkierClass()
     
-
-
 
     def frame_step(self,input_actions):
         pygame.event.pump()
@@ -154,15 +142,8 @@ class GameState:
         clock.tick(30)
         return image_data, reward, terminal
 
-
-
-
 pygame.init()
 screen = pygame.display.set_mode([640,640])
 clock = pygame.time.Clock()
 pygame.display.set_caption('Skier')
-
-
-
-
 
